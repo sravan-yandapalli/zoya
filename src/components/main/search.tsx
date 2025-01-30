@@ -28,6 +28,7 @@ export const Group = ({ property1 }: Props): JSX.Element => {
             >
                 LOGIN
             </div>
+            
         </div>
     );
 };
