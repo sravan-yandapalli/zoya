@@ -9,9 +9,11 @@ const SecondPage: React.FC = () => {
         <div>
             ther sections and components
       <div className="absolute top-[550px] left-[130px] rounded-[50px] w-60 h-[51px] text-mini">
-        <link href="/appointments" >
-        <b className="absolute h-[36.27%] w-[68.67%] top-[31.82%] left-[15.67%] inline-block">BOOK APPOINTMENT</b>
-        </link>
+        <Link href="/appointments" legacyBehavior>
+          <a className="absolute h-[36.27%] w-[68.67%] top-[31.82%] left-[15.67%] inline-block">
+            <b>BOOK APPOINTMENT</b>
+          </a>
+        </Link>
       </div>
       <div className="absolute top-[205px] left-[120px] w-[739px] h-[72.2px] text-[64px] text-black">
         <div className="absolute top-[0px] left-[0px] w-[739px] h-[72.2px]">
