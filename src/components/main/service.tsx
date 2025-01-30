@@ -5,12 +5,12 @@ import { useReducer } from "react";
 
 interface Props {
     property1: "variant-2" | "default";
-    className: any;
+    className: string;
 }
 
 export const Services = ({ property1, className }: Props): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, {
-        property1: property1 || "default",
+        property1: (property1 as "variant-2" | "default") || "default",
     });
 
     return (
@@ -38,7 +38,13 @@ export const Services = ({ property1, className }: Props): JSX.Element => {
     );
 };
 
-function reducer(state: any, action: any) {
+interface State {
+    property1: "variant-2" | "default";
+}
+
+type Action = "mouse_enter" | "mouse_leave";
+
+function reducer(state: State, action: Action): State {
     switch (action) {
         case "mouse_enter":
             return {

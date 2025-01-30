@@ -11,7 +11,7 @@ function HorizontalScroll() {
     } else {
       startX = e.touches[0].clientX;
     }
-    let scrollLeft = scrollRef.current.scrollLeft;
+    const scrollLeft = scrollRef.current.scrollLeft;
 
     const onMove = (event: MouseEvent | TouchEvent) => {
       const x = 'clientX' in event ? event.clientX : event.touches[0].clientX;

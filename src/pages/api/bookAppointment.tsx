@@ -1,41 +1,37 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import AWS from "aws-sdk";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-// Configure AWS SDK
-AWS.config.update({
-  region: "your-region",
-  accessKeyId: "your-access-key-id",
-  secretAccessKey: "your-secret-access-key",
-});
+interface AppointmentData {
+  name: string;
+  email: string;
+  phone: string;
+  reason: string;
+  date: string;
+  time: string;
+}
 
-const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const bookAppointment = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method === 'POST') {
+    const { name, email, phone, reason, date, time }: AppointmentData = req.body;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    const { name, email, phone, reason, date, time } = req.body;
-
-    const params = {
-      TableName: "Appointments",
-      Item: {
-        id: Date.now().toString(),
-        name,
-        email,
-        phone,
-        reason,
-        date,
-        time,
-      },
-    };
+    // Here, you can add your logic to store the appointment data
+    // Example: Save to a database or send an email
 
     try {
-      await dynamoDB.put(params).promise();
-      res.status(200).json({ message: "Appointment booked successfully!" });
+      // Assuming you're using a database like MySQL, MongoDB, or any other
+      // const appointment = await saveAppointmentToDatabase({ name, email, phone, reason, date, time });
+
+      // For now, just log the appointment data
+      console.log('New appointment:', { name, email, phone, reason, date, time });
+
+      // Send a response indicating success
+      return res.status(200).json({ message: 'Appointment booked successfully!' });
     } catch (error) {
-      console.error("Error saving appointment:", error);
-      res.status(500).json({ error: "Failed to save appointment." });
+      console.error('Error booking appointment:', error);
+      return res.status(500).json({ message: 'Failed to book appointment. Please try again later.' });
     }
   } else {
-    res.setHeader("Allow", ["POST"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    return res.status(405).json({ message: 'Method Not Allowed' });
   }
-}
+};
+
+export default bookAppointment;

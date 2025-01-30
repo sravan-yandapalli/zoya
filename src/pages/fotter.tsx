@@ -21,27 +21,6 @@ const WorkingHours = () => (
   </div>
 );
 
-const FaSolidPhoneAlt = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 512 512"
-    fill="white"
-    className={`w-6 h-6 ${className}`}
-  >
-    <path d="M493.4 24.6l-104-24c-11.3-2.6-23.1 3.3-28.2 14.1l-48 104c-4.3 9.3-2.4 20.3 4.6 27.6l60.6 63.5c-36.2 76.5-99.2 139.5-175.7 175.7l-63.5-60.6c-7.3-7-18.3-8.9-27.6-4.6l-104 48c-10.8 5-16.7 16.9-14.1 28.2l24 104c2.6 11.3 13.1 19.4 24.6 19.4 256.5 0 464-207.5 464-464 0-11.5-8.1-22-19.4-24.6z" />
-  </svg>
-);
-
-const TablerMail = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="white"
-    className="w-6 h-6"
-  >
-    <path d="M12 13.5l-11-7v11a2 2 0 002 2h18a2 2 0 002-2v-11l-11 7zm11-9.5h-22v2l11 7 11-7v-2z" />
-  </svg>
-);
 
 const Footer = (): JSX.Element => {
   return (

@@ -22,7 +22,7 @@ const SecondPage: React.FC = () => {
         <div className="absolute top-[0px] left-[0px] w-[632.5px] h-[664px]" />
       </div>
       <b className="absolute top-[333px] left-[130px] text-base leading-[173.52%] inline-block text-dimgray-100 w-[578px] h-[187px]">
-        At Zoya, we are committed to providing holistic homeopathic care that addresses the root cause of your health concerns. Whether you're dealing with acute illnesses or chronic conditions, our personalized treatments are designed to help you achieve lasting wellness. Homeopathy focuses on empowering your body’s natural healing process using gentle, effective remedies tailored to your needs. Experience the power of nature in restoring balance to your mind and body.
+        At Zoya, we are committed to providing holistic homeopathic care that addresses the root cause of your health concerns. Whether you&apos;re dealing with acute illnesses or chronic conditions, our personalized treatments are designed to help you achieve lasting wellness. Homeopathy focuses on empowering your body&rsquo;s natural healing process using gentle, effective remedies tailored to your needs. Experience the power of nature in restoring balance to your mind and body.
       </b>
       <div className="absolute top-[550px] left-[130px] rounded-[50px] w-60 h-[51px] text-mini">
        
@@ -51,7 +51,7 @@ const SecondPage: React.FC = () => {
         Booking an appointment is simple and convenient. Access expert homeopathic care in-clinic or online, tailored to fit your schedule and needs.
       </b>
       <b className="absolute top-[773px] left-[1060px] text-base inline-block text-dimgray-200 w-[331px] h-[59px]">
-        Our homeopathic medications are natural, safe, and free from side effects, designed to stimulate your body’s healing process effectively.
+        Our homeopathic medications are natural, safe, and free from side effects, designed to stimulate your body&rsquo;s healing process effectively.
       </b>
       <b className="absolute top-[871px] left-[607px] text-xs inline-block w-[98.3px] h-[50px]">READ MORE</b>
       <b className="absolute top-[870px] left-[1063px] text-xs inline-block w-[98.3px] h-[50px]">READ MORE</b>

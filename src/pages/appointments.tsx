@@ -4,7 +4,7 @@ import Image from "next/image";
 import "../app/globals.css";
 import "../app/globals.css";
 import Header from '@/pages/nav'
-import Link from 'next/link';
+
 
 const Desktop: NextPage = () => {
   const [appointmentData, setAppointmentData] = useState({
@@ -58,18 +58,18 @@ const Desktop: NextPage = () => {
     if (validateForm()) {
       try {
         const response = await fetch("/api/bookAppointment", {
-          method: "POST",
+          method: "POST", // Ensure this is set to POST
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(appointmentData),
+          body: JSON.stringify(appointmentData), // Sending the form data
         });
   
         if (response.ok) {
-          setShowPopup(true); // Optional: Show a popup confirmation
+          setShowPopup(true);
           setTimeout(() => {
-            window.location.href = "/Home"; // Redirect to homepage
-          }, 2000); // Delay for user to see the confirmation
+            window.location.href = "/";
+          }, 2000);
         } else {
           alert("Failed to book appointment. Please try again.");
         }
@@ -99,7 +99,7 @@ const Desktop: NextPage = () => {
         {/* Background Content Section */}
         <div className="hidden lg:flex flex-col items-center space-y-6">
           <div className="text-[32px] font-itim text-dimgray-100 text-center max-w-[441px]">
-            "Take the First Step Toward Natural Healing! Book your consultation with our expert homeopathy practitioners today."
+            &quot;Take the First Step Toward Natural Healing! Book your consultation with our expert homeopathy practitioners today.&quot;
           </div>
           <Image
             className="h-auto w-[246px]"
