@@ -1,37 +1,35 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import mysql from 'mysql2/promise';
 
-interface AppointmentData {
-  name: string;
-  email: string;
-  phone: string;
-  reason: string;
-  date: string;
-  time: string;
-}
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    if (req.method !== 'POST') {
+        return res.status(405).json({ message: 'Method Not Allowed' });
+    }
 
-const bookAppointment = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'POST') {
-    const { name, email, phone, reason, date, time }: AppointmentData = req.body;
+    const { name, email, phone, reason, date, time } = req.body;
 
-    // Here, you can add your logic to store the appointment data
-    // Example: Save to a database or send an email
+    if (!name || !email || !phone || !reason || !date || !time) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
 
     try {
-      // Assuming you're using a database like MySQL, MongoDB, or any other
-      // const appointment = await saveAppointmentToDatabase({ name, email, phone, reason, date, time });
+        const connection = await mysql.createConnection({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+        });
 
-      // For now, just log the appointment data
-      console.log('New appointment:', { name, email, phone, reason, date, time });
+        const query = `
+            INSERT INTO appointments (name, email, phone, reason, date, time)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `;
+        await connection.execute(query, [name, email, phone, reason, date, time]);
+        await connection.end();
 
-      // Send a response indicating success
-      return res.status(200).json({ message: 'Appointment booked successfully!' });
+        return res.status(200).json({ message: 'Appointment booked successfully' });
     } catch (error) {
-      console.error('Error booking appointment:', error);
-      return res.status(500).json({ message: 'Failed to book appointment. Please try again later.' });
+        console.error('Database Error:', error);
+        return res.status(500).json({ message: 'Internal Server Error' });
     }
-  } else {
-    return res.status(405).json({ message: 'Method Not Allowed' });
-  }
-};
-
-export default bookAppointment;
+}
