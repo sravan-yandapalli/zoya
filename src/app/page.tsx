@@ -21,10 +21,11 @@ const Main: NextPage = () => {
 
       <div><Header /></div>
       <div><PediatricsCover/></div>
-      <div><Console/></div>
       <div><Desktop/></div>
+      
       <div><HorizontalScrollingSection/></div>
       <div><DiseaseSlider/></div>
+      <div><Console/></div>
       <div><QuoteCard/></div>
       <div><Footer/></div>
       

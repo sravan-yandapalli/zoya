@@ -25,8 +25,8 @@ const Nav = (): JSX.Element => {
                     className="flex-shrink-0"
                     alt="Logo name"
                     src="/assets/corosole/logo-name.svg" // Adjust path as needed
-                    width={100} // Adjust width as needed
-                    height={50} // Adjust height as needed
+                    width={300} // Adjust width as needed
+                    height={250} // Adjust height as needed
                 />
 
                 {/* Navbar Links (Desktop) */}
