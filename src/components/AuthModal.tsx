@@ -92,21 +92,21 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             <>
               {isLogin ? (
                 <>
-                  <p className="text-sm text-gray-600">Don't have an account?{" "}
+                  <p className="text-sm text-gray-600">Don&apos;t have an account? {" "}
                     <button className="text-blue-500 font-bold" onClick={() => setIsLogin(false)}>Sign Up</button>
                   </p>
-                  <p className="text-sm text-gray-600">Forgot password?{" "}
+                  <p className="text-sm text-gray-600">Forgot password? {" "}
                     <button className="text-blue-500 font-bold" onClick={() => setIsForgotPassword(true)}>Reset</button>
                   </p>
                 </>
               ) : (
-                <p className="text-sm text-gray-600">Already have an account?{" "}
+                <p className="text-sm text-gray-600">Already have an account? {" "}
                   <button className="text-blue-500 font-bold" onClick={() => setIsLogin(true)}>Login</button>
                 </p>
               )}
             </>
           ) : (
-            <p className="text-sm text-gray-600">Remembered your password?{" "}
+            <p className="text-sm text-gray-600">Remembered your password? {" "}
               <button className="text-blue-500 font-bold" onClick={() => setIsForgotPassword(false)}>Login</button>
             </p>
           )}
