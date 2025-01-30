@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, JSX } from "react";
 import Link from 'next/link';
+import Image from 'next/image';
 import { About } from "@/components/main/about";
 import { Contact } from "@/components/main/contact";
 import { Home } from "@/components/main/home";
@@ -20,19 +21,20 @@ const Nav = (): JSX.Element => {
     return (
         <div>
             <div className="flex w-full h-[111px] items-center justify-between px-[50px] py-2.5 bg-[#17616e]">
-                {/* Logo */}
-                <img
+                <Image
                     className="flex-shrink-0"
                     alt="Logo name"
                     src="/assets/corosole/logo-name.svg" // Adjust path as needed
+                    width={100} // Adjust width as needed
+                    height={50} // Adjust height as needed
                 />
 
                 {/* Navbar Links (Desktop) */}
                 <div className="hidden lg:flex items-center justify-center gap-[30px]">
                     <Link href="/"><Home className="!ml-[-1.50px] !h-[17px] !w-[47px]" property1="default" /></Link>
-                    <Link href="/hero" ><Services className="!h-[17px] !w-[73px]" property1="default" /></Link>
-                    <Link href="/disease"><About className="!h-[17px] !w-[55px]" property1="default" /></Link>
-                    <Link href="/fotter"><Contact className="!h-[17px] !mr-[-1.50px] !w-[77px]" property1="default" /></Link>
+                    <Link href="/#hero" ><Services className="!h-[17px] !w-[73px]" property1="default" /></Link>
+                    <Link href="/#dis"><About className="!h-[17px] !w-[55px]" property1="default" /></Link>
+                    <Link href="/#fot"><Contact className="!h-[17px] !mr-[-1.50px] !w-[77px]" property1="default" /></Link>
                 </div>
 
                 {/* Group and Group1 (Desktop) */}

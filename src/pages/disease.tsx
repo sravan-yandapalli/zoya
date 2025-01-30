@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "@/app/globals.css";
 
@@ -61,9 +62,11 @@ interface DiseaseCardProps {
 
 const DiseaseCard = ({ name, img, description }: DiseaseCardProps) => (
   <div className="min-w-[300px] max-w-[350px] p-6 bg-[#C5A8E9] rounded-2xl shadow-lg flex flex-col items-center text-center border border-gray-300 select-none">
-    <img
+    <Image
       src={img}
       alt={name}
+      width={96} // Image width in pixels
+      height={96} // Image height in pixels
       className="w-24 h-24 mb-4 object-contain select-none pointer-events-none"
     />
     <h3 className="text-lg font-semibold text-purple-700">{name}</h3>
@@ -81,7 +84,7 @@ export default function DiseaseSlider() {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto p-6 bg-[#E6E6FA] rounded-xl shadow-md">
+    <div id="dis" className="relative w-full max-w-5xl mx-auto p-6 bg-[#E6E6FA] rounded-xl shadow-md mb-20">
       <h2 className="text-2xl font-bold text-center text-purple-900 mb-6 select-none">
         Diseases We Treat
       </h2>

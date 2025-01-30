@@ -1,19 +1,20 @@
 "use client";
 
 import React, { JSX } from "react";
+import Image from "next/image";
 import "@/app/globals.css";
 
 const InfoBlock = ({ title, content }: { title: string, content: JSX.Element | string }) => (
   <div className="flex flex-col items-start gap-2">
-    <div className="text-white text-2xl font-normal">{title}</div>
-    <p className="text-white text-sm">{content}</p>
+    <div className="text-purple-900 text-2xl font-semibold">{title}</div>
+    <p className="text-purple-800 text-sm">{content}</p>
   </div>
 );
 
 const WorkingHours = () => (
   <div className="flex flex-col">
     {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-      <div key={day} className="text-white text-sm">
+      <div key={day} className="text-purple-800 text-sm">
         <span>{day} - </span>
         <span>10:00 AM - 8:00 PM</span>
       </div>
@@ -21,12 +22,22 @@ const WorkingHours = () => (
   </div>
 );
 
-
 const Footer = (): JSX.Element => {
   return (
-    <div className="bg-[#3a3a3a] flex justify-center w-full py-16">
-      <div className="w-full max-w-screen-xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
+    <div id='fot' className="relative flex justify-center w-full py-16 bg-black-100">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="assets/fotter/bg.jpg" // Replace with your actual image path
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-20"
+        />
+      </div>
+      
+      <div className="w-full max-w-screen-xl relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-purple-900">
           <div>
             <InfoBlock
               title="Corporate Address"
@@ -51,18 +62,18 @@ const Footer = (): JSX.Element => {
             />
           </div>
           <div>
-            <div className="text-2xl font-normal">Working Time</div>
+            <div className="text-2xl font-semibold">Working Time</div>
             <WorkingHours />
           </div>
           <div>
-            <div className="text-white text-xl mb-4">Contact Us</div>
-            <div className="text-white text-sm">
+            <div className="text-purple-900 text-xl mb-4">Contact Us</div>
+            <div className="text-purple-800 text-sm">
               <strong>Existing Patients Queries and Follow Up:<br/><br/></strong> 7075367929 <br/>(8AM to 10PM)
             </div>
           </div>
         </div>
-        <div className="mt-8 text-center text-white text-sm">
-          <p>&copy; 2025 Chikkas Crafts. All Rights Reserved.</p>
+        <div className="mt-8 text-center text-purple-900 text-sm">
+          <p>&copy; 2025 Zoya Homeo Care. All Rights Reserved.</p>
         </div>
       </div>
     </div>

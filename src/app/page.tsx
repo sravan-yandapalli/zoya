@@ -9,6 +9,7 @@ import {PediatricsCover} from '@/pages/cover';
 import HorizontalScrollingSection from '@/pages/mscroll';
 import DiseaseSlider from '@/pages/disease';
 import  Footer from '@/pages/fotter'
+import QuoteCard from '@/pages/quot';
 
 
 
@@ -24,7 +25,9 @@ const Main: NextPage = () => {
       <div><Desktop/></div>
       <div><HorizontalScrollingSection/></div>
       <div><DiseaseSlider/></div>
+      <div><QuoteCard/></div>
       <div><Footer/></div>
+      
       
       </div>
 
