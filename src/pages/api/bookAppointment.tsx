@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             INSERT INTO appointments (name, email, phone, reason, date, time)
             VALUES (?, ?, ?, ?, ?, ?)
         `;
-        const [rows] = await pool.execute(query, [name, email, phone, reason, date, time]);
+        await pool.execute(query, [name, email, phone, reason, date, time]);
 
         return res.status(200).json({ message: 'Appointment booked successfully' });
     } catch (error: unknown) {
