@@ -31,7 +31,7 @@ const Footer = (): JSX.Element => {
           src="assets/fotter/bg.jpg" // Replace with your actual image path
           alt="Background"
           layout="fill"
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
           className="opacity-20"
         />
       </div>
