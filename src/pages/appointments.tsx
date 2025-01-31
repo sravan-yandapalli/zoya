@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Image from "next/image";
 import "../app/globals.css";
 import "../app/globals.css";
-import Header from '@/pages/nav'
+import Header from '@/pages/nav';
 
 
 const Desktop: NextPage = () => {
