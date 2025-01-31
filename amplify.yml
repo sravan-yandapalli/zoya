@@ -8,8 +8,6 @@ frontend:
     build:
       commands:
         - echo "Writing environment variables to .env.production"
-        # Handle only environment variables prefixed with NEXT_PUBLIC_
-        - env | grep -e NEXT_PUBLIC_ >> .env.production
         # Handle database-related environment variables for SSR or server-side usage
         - env | grep -e DB_HOST -e DB_PASSWORD -e DB_PORT -e DB_NAME -e DB_USER >> .env.production
         # Run the build command
