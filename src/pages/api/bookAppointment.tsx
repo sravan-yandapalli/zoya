@@ -1,6 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import mysql from 'mysql2/promise';
 
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
+});
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
@@ -13,28 +21,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        console.log("Connecting to DB...");
-        console.log("DB_HOST:", process.env.DB_HOST);
-        console.log("DB_USER:", process.env.DB_USER);
-        console.log("DB_NAME:", process.env.DB_NAME);
-        console.log("DB_PORT:", process.env.DB_PORT);
-
-        const connection = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME,
-            port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
-        });
-
-        console.log("Connected to DB");
-
+        // Using the connection pool to execute queries
         const query = `
             INSERT INTO appointments (name, email, phone, reason, date, time)
             VALUES (?, ?, ?, ?, ?, ?)
         `;
-        await connection.execute(query, [name, email, phone, reason, date, time]);
-        await connection.end();
+        const [rows] = await pool.execute(query, [name, email, phone, reason, date, time]);
 
         return res.status(200).json({ message: 'Appointment booked successfully' });
     } catch (error: unknown) {
