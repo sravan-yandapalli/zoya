@@ -6,7 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - env | grep -e DB_HOST -e DB_PASSWORD  -e DB_PORT -e DB-NAME -e DB_USER>> .env.production
+        - env | grep -e DB_HOST -e DB_PASSWORD  -e DB_PORT -e DB_NAME -e DB_USER>> .env.production
         - env | grep -e NEXT_PUBLIC_ >> .env.production
         - npm run build
   artifacts:
