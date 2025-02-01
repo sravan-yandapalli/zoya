@@ -47,7 +47,6 @@ const Desktop = () => {
                                     </div>
                                     <h3 className="text-white text-xl font-bold mt-4">{item.title}</h3>
                                     <p className="text-[#5b5a5a] text-base font-bold mt-2">{item.text}</p>
-                                    <button className="text-white text-xs font-bold mt-4">READ MORE</button>
                                 </div>
                             ))}
                         </div>
