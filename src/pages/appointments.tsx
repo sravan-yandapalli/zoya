@@ -182,14 +182,9 @@ const Desktop: NextPage = () => {
               required
             >
               <option value="">Select Time</option>
-              <option value="10:00 AM">10:00 AM</option>
-              <option value="11:00 AM">11:00 AM</option>
-              <option value="12:00 PM">12:00 PM</option>
-              <option value="01:00 PM">01:00 PM</option>
-              <option value="02:00 PM">02:00 PM</option>
-              <option value="03:00 PM">03:00 PM</option>
-              <option value="04:00 PM">04:00 PM</option>
-              <option value="05:00 PM">05:00 PM</option>
+              <option value="10:00 AM">10:00 AM - 1:30 PM</option>
+         
+              <option value="05:00 PM">05:00 PM - 8:30 PM</option>
             </select>
             {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
 
@@ -199,6 +194,8 @@ const Desktop: NextPage = () => {
             >
               Book Appointment
             </button>
+            <p className="text-gray-600 text-sm mt-2">*A consultation fee of ₹500 is applicable.</p>
+
           </div>
         </form>
 
@@ -207,7 +204,7 @@ const Desktop: NextPage = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-6 rounded-lg shadow-lg text-center animate__animated animate__fadeIn">
               <h2 className="text-2xl font-bold text-mediumslateblue mb-4">Appointment Booked!</h2>
-              <p className="text-gray-700 mb-4">Thank you for booking your appointment. We will contact you shortly.</p>
+              <p className="text-gray-700 mb-4">A consultation fee of ₹500 is applicable. We will contact you shortly.</p>
               <button
                 onClick={closePopup}
                 className="px-4 py-2 rounded-lg bg-mediumslateblue text-white hover:bg-mediumpurple transition duration-300"

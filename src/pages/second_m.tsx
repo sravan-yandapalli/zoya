@@ -46,7 +46,6 @@ const SecondPage: React.FC = () => {
       <b className="absolute top-[777px] left-[168px] text-base inline-block text-dimgray-100 w-[305px] h-[59px]">
         Personalized homeopathic care for acute and chronic conditions, focusing on holistic healing and lasting wellness.
       </b>
-      <b className="absolute top-[871px] left-[168px] text-xs inline-block w-[98.3px] h-[50px]">READ MORE</b>
       <Image className="absolute top-[742px] left-[490px] rounded-xl w-[128px] h-[128px]" width={128} height={128} alt="" src="/Group 174.svg" />
       <b className="absolute top-[742px] left-[607px] inline-block w-[327.6px] h-[63.4px]">{`APPOIMENTS & ACCESS`}</b>
       <b className="absolute top-[774px] left-[607px] text-base inline-block text-dimgray-200 w-[333.1px] h-[59.5px]">
@@ -55,8 +54,6 @@ const SecondPage: React.FC = () => {
       <b className="absolute top-[773px] left-[1060px] text-base inline-block text-dimgray-200 w-[331px] h-[59px]">
         Our homeopathic medications are natural, safe, and free from side effects, designed to stimulate your body&rsquo;s healing process effectively.
       </b>
-      <b className="absolute top-[871px] left-[607px] text-xs inline-block w-[98.3px] h-[50px]">READ MORE</b>
-      <b className="absolute top-[870px] left-[1063px] text-xs inline-block w-[98.3px] h-[50px]">READ MORE</b>
       <Image className="absolute top-[752px] left-[62px] rounded-[242px] w-[99px] h-[93px] object-cover" width={99} height={93} alt="" src="/Caduceus_Logo_Medical_Symbol_Healthy_Icon_Stock_Vector__Royalty_Free__1527099974___Shutterstock-removebg-preview 2.svg" />
       
       <div className="absolute top-[745px] left-[945px] rounded-[50%] bg-white w-[103px] h-[105px]" />
