@@ -24,17 +24,11 @@ const Desktop = () => {
                             At Zoya, we are committed to providing holistic homeopathic care that addresses the root cause of your health concerns.
                             Experience the power of nature in restoring balance to your mind and body.
                         </p>
-<<<<<<< HEAD
-                        <Link href="/appointments" legacyBehavior>
-                            <a><Group className="mt-6 !bg-[#af89e4]" property1="default" /></a>
-                        </Link>
-=======
                         <div className="mt-10 mb-10">
                         <Link href="/appointments" legacyBehavior>
                             <a><Group className="mt-6 !bg-[#af89e4]" property1="default" /></a>
                         </Link>
                         </div>
->>>>>>> 38444b1 (change-1)
                     </div>
                     <div className="relative w-full max-w-screen-lg bg-[#af89e4] rounded-xl px-6 py-10 mt-10">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center">

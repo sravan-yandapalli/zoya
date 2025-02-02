@@ -48,6 +48,15 @@ export const PediatricsCover = () => {
         >
           ZOYA HOMEO CARE
         </motion.h1>
+        
+        <motion.h4 
+          className="text-2.8xl mt-1 font-medium tracking-wide drop-shadow-lg"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          "A to Z Treatments With Zero Side Effects"
+        </motion.h4>
         <br/>
         <motion.h1 
           className="text-4xl font-extrabold tracking-wide drop-shadow-md"
@@ -55,10 +64,10 @@ export const PediatricsCover = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-         " PEDIATRIC "
+         ----- PEDIATRIC -----
         </motion.h1>
         <motion.p 
-          className="text-2xl mt-4 max-w-lg mx-auto leading-relaxed"
+          className="text-1xl mt-2 max-w-lg mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}

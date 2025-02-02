@@ -11,22 +11,6 @@ const InfoBlock = ({ title, content }: { title: string, content: JSX.Element | s
   </div>
 );
 
-<<<<<<< HEAD
-const WorkingHours = () => (
-  <div className="flex flex-col">
-    {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-      <div key={day} className="text-purple-800 text-sm">
-        <span>{day} - </span>
-        <span>10:00 AM - 8:00 PM</span>
-      </div>
-    ))}
-  </div>
-);
-
-const Footer = (): JSX.Element => {
-  return (
-    <div id='fot' className="relative flex justify-center w-full py-16 bg-black-100">
-=======
 const WorkingHours = () => {
   const hours = [
     { day: "Monday", time: "10:00 AM - 8:00 PM" },
@@ -53,7 +37,6 @@ const WorkingHours = () => {
 const Footer = (): JSX.Element => {
   return (
     <div id="fot" className="relative flex justify-center w-full py-16 px-10 bg-black-100">
->>>>>>> 38444b1 (change-1)
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -64,11 +47,6 @@ const Footer = (): JSX.Element => {
           className="opacity-20"
         />
       </div>
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 38444b1 (change-1)
       <div className="w-full max-w-screen-xl relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-purple-900">
           <div>
@@ -101,11 +79,7 @@ const Footer = (): JSX.Element => {
           <div>
             <div className="text-purple-900 text-xl mb-4">Contact Us</div>
             <div className="text-purple-800 text-sm">
-<<<<<<< HEAD
-              <strong>Existing Patients Queries and Follow Up:<br/><br/></strong> 7075367929 <br/>(8AM to 10PM)
-=======
               <strong>Existing Patients Queries and Follow Up:<br /><br /></strong>+91 7075367929 <br /> (8AM to 10PM)
->>>>>>> 38444b1 (change-1)
             </div>
           </div>
         </div>

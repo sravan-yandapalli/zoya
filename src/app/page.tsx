@@ -10,10 +10,7 @@ import HorizontalScrollingSection from '@/pages/mscroll';
 import DiseaseSlider from '@/pages/disease';
 import  Footer from '@/pages/fotter'
 import QuoteCard from '@/pages/quot';
-<<<<<<< HEAD
-=======
 import WhatsAppButton from "@/components/WhatsAppButton";
->>>>>>> 38444b1 (change-1)
 
 
 
@@ -26,12 +23,9 @@ const Main: NextPage = () => {
       <div><Header /></div>
       <div><PediatricsCover/></div>
       <div><Desktop/></div>
-<<<<<<< HEAD
-=======
       <div>
       <WhatsAppButton />
       </div>
->>>>>>> 38444b1 (change-1)
       
       <div><HorizontalScrollingSection/></div>
       <div><DiseaseSlider/></div>
