@@ -4,6 +4,11 @@ import Image from "next/image";
 import "../app/globals.css";
 import "../app/globals.css";
 import Header from '@/pages/nav';
+<<<<<<< HEAD
+=======
+import WhatsAppButton from "@/components/WhatsAppButton";
+
+>>>>>>> 38444b1 (change-1)
 
 
 const Desktop: NextPage = () => {
@@ -181,10 +186,21 @@ const Desktop: NextPage = () => {
               className={`w-full p-3 rounded-lg bg-gray-100 text-black border-2 ${errors.time ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:border-mediumslateblue`}
               required
             >
+<<<<<<< HEAD
               <option value="">Select Time</option>
               <option value="10:00 AM">10:00 AM - 1:30 PM</option>
          
               <option value="05:00 PM">05:00 PM - 8:30 PM</option>
+=======
+              <option value="">Select Day and Time</option>
+              <option value="Monday - 10:00 AM - 8:00 PM">Monday - 10:00 AM - 8:00 PM</option>
+              <option value="Tuesday - 10:00 AM - 8:00 PM">Tuesday - 10:00 AM - 8:00 PM</option>
+              <option value="Wednesday - 10:00 AM - 8:00 PM">Wednesday - 10:00 AM - 8:00 PM</option>
+              <option value="Thursday - 10:00 AM - 8:00 PM">Thursday - 10:00 AM - 8:00 PM</option>
+              <option value="Friday - 10:00 AM - 1:30 PM">Friday - 10:00 AM - 1:30 PM</option>
+              <option value="Saturday - 10:00 AM - 8:00 PM">Saturday - 10:00 AM - 8:00 PM</option>
+              <option value="Sunday - 10:00 AM - 8:00 PM">Sunday - 10:00 AM - 8:00 PM</option>
+>>>>>>> 38444b1 (change-1)
             </select>
             {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
 
@@ -198,7 +214,13 @@ const Desktop: NextPage = () => {
 
           </div>
         </form>
+<<<<<<< HEAD
 
+=======
+        <div>
+      <WhatsAppButton />
+      </div>
+>>>>>>> 38444b1 (change-1)
         {/* Confirmation Popup */}
         {showPopup && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
