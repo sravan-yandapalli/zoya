@@ -184,13 +184,19 @@ const Desktop: NextPage = () => {
               required
             >
               <option value="">Select Day and Time</option>
-              <option value="Monday - 10:00 AM - 8:00 PM">Monday - 10:00 AM - 8:00 PM</option>
-              <option value="Tuesday - 10:00 AM - 8:00 PM">Tuesday - 10:00 AM - 8:00 PM</option>
-              <option value="Wednesday - 10:00 AM - 8:00 PM">Wednesday - 10:00 AM - 8:00 PM</option>
-              <option value="Thursday - 10:00 AM - 8:00 PM">Thursday - 10:00 AM - 8:00 PM</option>
+              <option value="Monday - 10:00 AM - 8:00 PM">Monday - 10:00 AM - 1:30 PM</option>
+              <option value="Monday - 10:00 AM - 8:00 PM">Monday - 5:00 AM - 8:00 PM</option>
+              <option value="Tuesday - 10:00 AM - 8:00 PM">Tuesday - 10:00 AM - 1:30 PM</option>
+              <option value="Tuesday - 10:00 AM - 8:00 PM">Tuesday - 5:00 AM - 8:00 PM</option>
+              <option value="Wednesday - 10:00 AM - 8:00 PM">Wednesday - 10:00 AM - 1:30 PM</option>
+              <option value="Wednesday - 10:00 AM - 8:00 PM">Wednesday - 5:00 AM - 8:00 PM</option>
+              <option value="Thursday - 10:00 AM - 8:00 PM">Thursday - 10:00 AM - 1:30 PM</option>
+              <option value="Thursday - 10:00 AM - 8:00 PM">Thursday - 5:00 AM - 8:00 PM</option>
               <option value="Friday - 10:00 AM - 1:30 PM">Friday - 10:00 AM - 1:30 PM</option>
-              <option value="Saturday - 10:00 AM - 8:00 PM">Saturday - 10:00 AM - 8:00 PM</option>
-              <option value="Sunday - 10:00 AM - 8:00 PM">Sunday - 10:00 AM - 8:00 PM</option>
+              <option value="Saturday - 10:00 AM - 8:00 PM">Saturday - 10:00 AM - 1:30 PM</option>
+              <option value="Saturday - 10:00 AM - 8:00 PM">Saturday - 5:00 AM - 8:00 PM</option>
+              <option value="Sunday - 10:00 AM - 8:00 PM">Sunday - 10:00 AM - 1:30 PM</option>
+              <option value="Sunday - 10:00 AM - 8:00 PM">Sunday - 5:00 AM - 8:00 PM</option>
             </select>
             {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
 
