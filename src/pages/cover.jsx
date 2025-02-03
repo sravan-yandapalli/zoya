@@ -55,7 +55,7 @@ export const PediatricsCover = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          "A to Z Treatments With Zero Side Effects"
+          "Z to A Treatment With Zero Side Effects"
         </motion.h4>
         <br/>
         <motion.h1 
