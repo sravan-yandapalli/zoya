@@ -63,7 +63,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {/* Close Button */}
         <button onClick={onClose} className="absolute top-2 right-2 text-gray-600 text-lg">✖</button>
 
-        <h2 className="text-xl font-bold text-center mb-4">
+        <h2 className="text-xl text-gray-800 font-bold text-center mb-4">
           {isForgotPassword ? "Reset Password" : isLogin ? "Login" : "Sign Up"}
         </h2>
 
@@ -93,21 +93,21 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               {isLogin ? (
                 <>
                   <p className="text-sm text-gray-600">Don&apos;t have an account? {" "}
-                    <button className="text-blue-500 font-bold" onClick={() => setIsLogin(false)}>Sign Up</button>
+                    <button className="text-purple-500 font-bold" onClick={() => setIsLogin(false)}>Sign Up</button>
                   </p>
                   <p className="text-sm text-gray-600">Forgot password? {" "}
-                    <button className="text-blue-500 font-bold" onClick={() => setIsForgotPassword(true)}>Reset</button>
+                    <button className="text-purple-500 font-bold" onClick={() => setIsForgotPassword(true)}>Reset</button>
                   </p>
                 </>
               ) : (
                 <p className="text-sm text-gray-600">Already have an account? {" "}
-                  <button className="text-blue-500 font-bold" onClick={() => setIsLogin(true)}>Login</button>
+                  <button className="text-purple-500 font-bold" onClick={() => setIsLogin(true)}>Login</button>
                 </p>
               )}
             </>
           ) : (
             <p className="text-sm text-gray-600">Remembered your password? {" "}
-              <button className="text-blue-500 font-bold" onClick={() => setIsForgotPassword(false)}>Login</button>
+              <button className="text-purple-500 font-bold" onClick={() => setIsForgotPassword(false)}>Login</button>
             </p>
           )}
         </div>

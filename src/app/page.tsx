@@ -12,8 +12,6 @@ import  Footer from '@/pages/fotter'
 import QuoteCard from '@/pages/quot';
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-
-
 const Main: NextPage = () => {
   return (
     <div className="w-full relative bg-white h-[1024px] overflow text-left text-xl text-white font-inter">

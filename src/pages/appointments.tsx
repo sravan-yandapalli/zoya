@@ -184,7 +184,7 @@ const Desktop: NextPage = () => {
               required
             >
               <option value="">Select Day and Time</option>
-              <option value="Everyday - 10:00 AM - 8:00 PM">Monday - 10:00 AM - 8:00 PM</option>
+              <option value="Everyday - 10:00 AM - 8:00 PM">Everyday - 10:00 AM - 8:00 PM</option>
               <option value="Friday - 10:00 AM - 1:30 PM">Friday - 10:00 AM - 1:30 PM</option>
               
             </select>
