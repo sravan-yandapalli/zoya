@@ -27,7 +27,7 @@ const transporter = nodemailer.createTransport({
 // const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
 // const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function bookAppointmentHandler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
