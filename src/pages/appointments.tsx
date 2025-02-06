@@ -4,6 +4,7 @@ import Image from "next/image";
 import "../app/globals.css";
 import Header from "@/pages/nav";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import axios from "axios";
 
 const Desktop: NextPage = () => {
   const [appointmentData, setAppointmentData] = useState<{ [key: string]: string }>({
@@ -58,24 +59,21 @@ const Desktop: NextPage = () => {
 
     if (validateForm()) {
       try {
-        const response = await fetch("/api/bookAppointment", {
-          method: "POST",
+        const response = await axios.post("/api/bookAppointment", appointmentData, {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(appointmentData),
         });
 
-        if (response.ok) {
+        if (response.status === 200) {
           setShowPopup(true);
           setTimeout(() => {
             window.location.href = "/";
           }, 2000);
         } else {
-          const errorData = await response.json();
-          alert(errorData.message || "Failed to book appointment. Please try again.");
+          alert(response.data.message || "Failed to book appointment. Please try again.");
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error submitting form:", error);
         alert("An error occurred. Please try again.");
       }
@@ -117,9 +115,7 @@ const Desktop: NextPage = () => {
                   name={field}
                   value={appointmentData[field]}
                   onChange={handleChange}
-                  className={`w-full p-3 rounded-lg bg-gray-100 text-black border-2 ${
-                    errors[field as keyof Errors] ? "border-red-500" : "border-gray-300"
-                  } focus:outline-none focus:border-mediumslateblue`}
+                  className={`w-full p-3 rounded-lg bg-gray-100 text-black border-2 ${errors[field as keyof Errors] ? "border-red-500" : "border-gray-300"} focus:outline-none focus:border-mediumslateblue`}
                   placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
                   required
                 />
