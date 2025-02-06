@@ -35,19 +35,23 @@ export default async function bookAppointmentHandler(req: NextApiRequest, res: N
 
     const { name, email, phone, reason, date, time } = req.body;
 
+    // Validate the input data
     if (!name || !email || !phone || !reason || !date || !time) {
         return res.status(400).json({ message: 'All fields are required' });
     }
 
     try {
-        // Insert into database
+        // Insert the appointment data into the database
         const [result] = await pool.execute(
             `INSERT INTO appointments (name, email, phone, reason, date, time) VALUES (?, ?, ?, ?, ?, ?)`,
             [name, email, phone, reason, date, time]
         );
 
-        if (!result) {
-            throw new Error('Database insertion failed');
+        // Type casting the result to access 'affectedRows'
+        const affectedRows = (result as mysql.ResultSetHeader).affectedRows;
+
+        if (affectedRows === 0) {
+            return res.status(500).json({ message: 'Failed to insert appointment into the database' }); // Return error response directly
         }
 
         // Send Email Confirmation
@@ -64,9 +68,23 @@ export default async function bookAppointmentHandler(req: NextApiRequest, res: N
             `,
         });
 
-        return res.status(200).json({ message: 'Appointment booked. Email sent successfully.' });
+        // Success response
+        return res.status(200).json({ message: 'Appointment booked successfully. Confirmation email sent.' });
+
     } catch (error: unknown) {
         console.error('Error:', error);
-        return res.status(500).json({ message: 'An error occurred', error: error instanceof Error ? error.message : 'Unknown error' });
+
+        if ((error as mysql.QueryError).code) {
+            return res.status(500).json({ message: 'Database error occurred', error: (error as mysql.QueryError).message });
+        } else if (error instanceof Error && error.message.includes('Email sending failed')) { // More specific check for Nodemailer errors
+          return res.status(500).json({ message: 'Email sending failed', error: error.message });
+        } else if (error instanceof Error && error.message.includes('Failed to insert appointment into the database')) {
+            return res.status(500).json({ message: 'Failed to insert appointment into the database', error: error.message });
+        }
+        else if (error instanceof Error) {
+            return res.status(500).json({ message: 'An unexpected error occurred', error: error.message });
+        } else {
+            return res.status(500).json({ message: 'An unexpected error occurred', error: 'Unknown error' });
+        }
     }
 }

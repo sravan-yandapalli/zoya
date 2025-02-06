@@ -127,15 +127,32 @@ const Desktop: NextPage = () => {
               </div>
             ))}
 
-            <input type="date" name="date" value={appointmentData.date} onChange={handleChange} min={today} className="w-full p-3 rounded-lg bg-gray-100 text-black border-2 focus:outline-none focus:border-mediumslateblue" required />
+            <input
+              type="date"
+              name="date"
+              value={appointmentData.date}
+              onChange={handleChange}
+              min={today}
+              className="w-full p-3 rounded-lg bg-gray-100 text-black border-2 focus:outline-none focus:border-mediumslateblue"
+              required
+            />
 
-            <select name="time" value={appointmentData.time} onChange={handleChange} className="w-full p-3 rounded-lg bg-gray-100 text-black border-2 focus:outline-none focus:border-mediumslateblue" required>
+            <select
+              name="time"
+              value={appointmentData.time}
+              onChange={handleChange}
+              className="w-full p-3 rounded-lg bg-gray-100 text-black border-2 focus:outline-none focus:border-mediumslateblue"
+              required
+            >
               <option value="">Select Day and Time</option>
               <option value="Everyday - 10:00 AM - 8:00 PM">Everyday - 10:00 AM - 8:00 PM</option>
               <option value="Friday - 10:00 AM - 1:30 PM">Friday - 10:00 AM - 1:30 PM</option>
             </select>
 
-            <button type="submit" className="w-full p-3 rounded-lg bg-mediumslateblue text-white text-xl font-semibold hover:bg-mediumpurple transition duration-300">
+            <button
+              type="submit"
+              className="w-full p-3 rounded-lg bg-mediumslateblue text-white text-xl font-semibold hover:bg-mediumpurple transition duration-300"
+            >
               Book Appointment
             </button>
           </div>
@@ -150,7 +167,10 @@ const Desktop: NextPage = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg text-center animate__animated animate__fadeIn">
             <h2 className="text-2xl font-bold text-mediumslateblue mb-4">Appointment Booked!</h2>
             <p className="text-gray-700 mb-4">A consultation fee of ₹500 is applicable. We will contact you shortly.</p>
-            <button onClick={closePopup} className="px-4 py-2 rounded-lg bg-mediumslateblue text-white hover:bg-mediumpurple transition duration-300">
+            <button
+              onClick={closePopup}
+              className="px-4 py-2 rounded-lg bg-mediumslateblue text-white hover:bg-mediumpurple transition duration-300"
+            >
               Close
             </button>
           </div>
