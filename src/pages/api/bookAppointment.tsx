@@ -50,7 +50,7 @@ export default async function bookAppointmentHandler(req: NextApiRequest, res: N
 
   try {
     // Insert into DB
-    const [result] = await pool.execute(
+    await pool.execute(
       `INSERT INTO appointments (name, email, phone, reason, date, time) VALUES (?, ?, ?, ?, ?, ?)`,
       [name, email, phone, reason, date, time]
     );

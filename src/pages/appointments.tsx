@@ -73,7 +73,7 @@ const Desktop: NextPage = () => {
         } else {
           alert(response.data.message || "Failed to book appointment. Please try again.");
         }
-      } catch (error: any) {
+      } catch (error: Error | unknown) {
         console.error("Error submitting form:", error);
         alert("An error occurred. Please try again.");
       }
