@@ -101,7 +101,7 @@ const Desktop: NextPage = () => {
         {/* Background Content Section */}
         <div className="hidden lg:flex flex-col items-center space-y-6">
           <div className="text-[32px] font-itim text-dimgray-100 text-center max-w-[441px]">
-            "Take the First Step Toward Natural Healing! Book your consultation with our expert homeopathy practitioners today."
+            {"Take the First Step Toward Natural Healing! Book your consultation with our expert homeopathy practitioners today."}
           </div>
           <Image className="h-auto w-[246px]" width={246} height={108} alt="Arrow Design" src="/assets/Arrow-design.svg" />
         </div>
