@@ -22,8 +22,20 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Define the appointment type
+interface Appointment {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  reason: string;
+  date: string;
+  time: string;
+  createdAt: string;
+}
+
 // Function to send email
-const sendConfirmationEmail = async (userEmail: string, appointment: any) => {
+const sendConfirmationEmail = async (userEmail: string, appointment: Appointment) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: userEmail,
@@ -55,7 +67,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Create new appointment object
-    const newItem = {
+    const newItem: Appointment = {
       id: uuidv4(),
       name,
       email,
