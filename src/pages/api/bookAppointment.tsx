@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import AWS from "aws-sdk";
 import { v4 as uuidv4 } from "uuid";
+import nodemailer from "nodemailer";
 
 // Configure AWS SDK
 AWS.config.update({
@@ -11,6 +12,31 @@ AWS.config.update({
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = "appointments";
+
+// Create a transporter for sending emails using Gmail
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+// Function to send email
+const sendConfirmationEmail = async (userEmail: string, appointment: any) => {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: userEmail,
+    subject: "Appointment Confirmation",
+    text: `Dear ${appointment.name},\n\nYour appointment has been booked successfully.\n\nDetails:\nName: ${appointment.name}\nEmail: ${appointment.email}\nPhone: ${appointment.phone}\nReason: ${appointment.reason}\nDate: ${appointment.date}\nTime: ${appointment.time}\n\nThank you for fast appointment contact +91 .\n\nZ to A Treatment With Zero Side Effects,\nZOYA HOMEO CARE`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
 
 // API handler
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -45,6 +71,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       TableName: TABLE_NAME,
       Item: newItem,
     }).promise();
+
+    // Send email confirmation to the user
+    await sendConfirmationEmail(email, newItem);
 
     // Return a success response
     return res.status(200).json({ message: "Appointment booked successfully!", appointment: newItem });
