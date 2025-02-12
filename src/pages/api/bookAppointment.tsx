@@ -1,71 +1,55 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import mysql from "mysql2/promise";
-import nodemailer from "nodemailer";
+import AWS from "aws-sdk";
+import { v4 as uuidv4 } from "uuid";
 
-// Ensure environment variables exist
-const requiredEnv = [
-  "DB_HOST",
-  "DB_USER",
-  "DB_PASSWORD",
-  "DB_NAME",
-  "EMAIL_USER",
-  "EMAIL_PASS",
-];
-requiredEnv.forEach((envVar) => {
-  if (!process.env[envVar]) throw new Error(`Missing environment variable: ${envVar}`);
+// Configure AWS SDK
+AWS.config.update({
+  accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+  region: process.env.NEXT_PUBLIC_AWS_REGION,
 });
 
-// Database connection pool
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const TABLE_NAME = "appointments";
 
-// Configure Nodemailer
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // Use TLS
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
-export default async function bookAppointmentHandler(req: NextApiRequest, res: NextApiResponse) {
+// API handler
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Allow only POST requests
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  const { name, email, phone, reason, date, time } = req.body;
-  if (!name || !email || !phone || !reason || !date || !time) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
-
   try {
-    // Insert into DB
-    await pool.execute(
-      `INSERT INTO appointments (name, email, phone, reason, date, time) VALUES (?, ?, ?, ?, ?, ?)`,
-      [name, email, phone, reason, date, time]
-    );
+    // Extract data from the request body
+    const { name, email, phone, reason, date, time } = req.body;
 
-    // Send email
-    await transporter.sendMail({
-      from: `"ZOYA Homeo Care" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: "Appointment Confirmation",
-      text: `Dear ${name},\n\nYour appointment for ${reason} has been booked for ${date} at ${time}.`,
-    });
+    // Validation checks
+    if (!name || !email || !phone || !reason || !date || !time) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
 
-    res.status(200).json({ message: "Appointment booked successfully!" });
+    // Create new appointment object
+    const newItem = {
+      id: uuidv4(),
+      name,
+      email,
+      phone,
+      reason,
+      date,
+      time,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Insert appointment data into DynamoDB
+    await dynamoDB.put({
+      TableName: TABLE_NAME,
+      Item: newItem,
+    }).promise();
+
+    // Return a success response
+    return res.status(200).json({ message: "Appointment booked successfully!", appointment: newItem });
   } catch (error) {
-    console.error("Error booking appointment:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error storing appointment:", error);
+    return res.status(500).json({ message: "Error storing appointment." });
   }
 }

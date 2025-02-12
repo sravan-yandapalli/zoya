@@ -23,6 +23,7 @@ const Desktop: NextPage = () => {
     reason?: string;
     date?: string;
     time?: string;
+    general?: string; // To handle general errors like submission failure
   }
 
   const [errors, setErrors] = useState<Errors>({});
@@ -60,22 +61,20 @@ const Desktop: NextPage = () => {
     if (validateForm()) {
       try {
         const response = await axios.post("/api/bookAppointment", appointmentData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         });
-
+        
         if (response.status === 200) {
           setShowPopup(true);
           setTimeout(() => {
             window.location.href = "/";
           }, 2000);
         } else {
-          alert(response.data.message || "Failed to book appointment. Please try again.");
+          setErrors({ general: "Failed to book appointment. Please try again." });
         }
       } catch (error: Error | unknown) {
         console.error("Error submitting form:", error);
-        alert("An error occurred. Please try again.");
+        setErrors({ general: "An error occurred. Please try again." });
       }
     }
   };
@@ -144,6 +143,8 @@ const Desktop: NextPage = () => {
               <option value="Everyday - 10:00 AM - 8:00 PM">Everyday - 10:00 AM - 8:00 PM</option>
               <option value="Friday - 10:00 AM - 1:30 PM">Friday - 10:00 AM - 1:30 PM</option>
             </select>
+
+            {errors.general && <p className="text-red-500 text-sm">{errors.general}</p>}
 
             <button
               type="submit"
