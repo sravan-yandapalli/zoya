@@ -1,4 +1,3 @@
-version: 1
 frontend:
   phases:
     preBuild:
@@ -8,8 +7,10 @@ frontend:
     build:
       commands:
         - echo "Writing environment variables to .env.production"
-        # Handle database-related environment variables for SSR or server-side usage
-        - env | grep -e DB_HOST -e DB_PASSWORD -e DB_PORT -e DB_NAME -e DB_USER >> .env.production
+        # Handle only environment variables prefixed with NEXT_PUBLIC_
+        - env | grep -e NEXT_PUBLIC_ >> .env.production
+        # Handle other necessary environment variables
+        - env | grep -e EMAIL_PASS -e EMAIL_USER -e NEXT_PUBLIC_AWS_ACCESS_KEY_ID -e NEXT_PUBLIC_AWS_REGION -e NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY >> .env.production
         # Run the build command
         - echo "Running the build..."
         - npm run build
@@ -21,3 +22,4 @@ frontend:
     paths:
       - node_modules/**/*
       - .next/cache/**/*
+
