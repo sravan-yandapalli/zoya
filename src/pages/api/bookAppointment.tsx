@@ -40,7 +40,7 @@ const sendConfirmationEmail = async (userEmail: string, appointment: Appointment
     from: process.env.EMAIL_USER,
     to: userEmail,
     subject: "Appointment Confirmation",
-    text: `Dear ${appointment.name},\n\nYour appointment has been booked successfully.\n\nDetails:\nName: ${appointment.name}\nEmail: ${appointment.email}\nPhone: ${appointment.phone}\nReason: ${appointment.reason}\nDate: ${appointment.date}\nTime: ${appointment.time}\n\nThank you for fast appointment contact +91 .\n\nZ to A Treatment With Zero Side Effects,\nZOYA HOMEO CARE`,
+    text: `Dear ${appointment.name},\n\nYour appointment has been booked successfully.\n\nDetails:\nName: ${appointment.name}\nEmail: ${appointment.email}\nPhone: ${appointment.phone}\nReason: ${appointment.reason}\nDate: ${appointment.date}\nTime: ${appointment.time}\n\nThank you for fast appointment contact +91 7075367929.\n\nZ to A Treatment With Zero Side Effects,\nZOYA HOMEO CARE`,
   };
 
   try {
