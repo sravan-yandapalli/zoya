@@ -1,3 +1,4 @@
+version: 1
 frontend:
   phases:
     preBuild:
@@ -7,11 +8,10 @@ frontend:
     build:
       commands:
         - echo "Writing environment variables to .env.production"
-        # Handle only environment variables prefixed with NEXT_PUBLIC_
+        # Store only NEXT_PUBLIC_ environment variables
         - env | grep -e NEXT_PUBLIC_ >> .env.production
-        # Handle other necessary environment variables
-        - env | grep -e EMAIL_PASS -e EMAIL_USER -e NEXT_PUBLIC_AWS_ACCESS_KEY_ID -e NEXT_PUBLIC_AWS_REGION -e NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY >> .env.production
-        # Run the build command
+        # Store other required environment variables
+        - env | grep -E 'EMAIL_PASS|EMAIL_USER|COGNITO_CLIENT_ID|COGNITO_CLIENT_SECRET|COGNITO_ISSUER|NEXTAUTH_URL|NEXTAUTH_SECRET' >> .env.production
         - echo "Running the build..."
         - npm run build
   artifacts:
@@ -22,4 +22,3 @@ frontend:
     paths:
       - node_modules/**/*
       - .next/cache/**/*
-
