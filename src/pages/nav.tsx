@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -41,7 +41,13 @@ const Header: React.FC = () => {
           {session?.user?.email && <span className="text-white">Welcome, {session.user.email}</span>}
 
           <Button
-            onClick={() => (session ? signOut() : signIn("cognito"))}
+            onClick={() => {
+              if (session) {
+                signOut();
+              } else {
+                signIn("cognito");
+              }
+            }}
             className="text-white bg-lavender-500 px-4 py-2 rounded-md hover:bg-lavender-400"
           >
             {session ? "Logout" : "Login"}
@@ -65,7 +71,11 @@ const Header: React.FC = () => {
 
           <Button
             onClick={() => {
-              session ? signOut() : signIn("cognito");
+              if (session) {
+                signOut();
+              } else {
+                signIn("cognito");
+              }
               setIsMobileMenuOpen(false);
             }}
             className="text-white"

@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SessionProvider from "@/components/sessionProvider"; // Import the new provider
+import SessionProvider from "@/components/sessionProvider"; 
 
 export const metadata = {
   title: "Zoya Homeo Care",
